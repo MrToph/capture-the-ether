@@ -22,7 +22,6 @@ const accounts = {
 
 // Go to https://hardhat.org/config/ to learn more
 const config: HardhatUserConfig = {
-  // solidity: ["0.4.21", "0.7.3"],
   solidity: {
     compilers: [
       // old ethernaut compiler

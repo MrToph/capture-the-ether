@@ -2,6 +2,11 @@
 
 My solutions to [capture-the-ether CTF](https://capturetheether.com/).
 
+Progress: 11600/11600
+Rank: 56
+
+[![Leaderboard](./README/leaderboard.png)](https://capturetheether.com/leaderboard/)
+
 ## Development
 
 ```bash
@@ -20,7 +25,7 @@ Pick a mnemonic and use the resulting first ETH account as the challenger accoun
 #### Hardhat
 
 This repo uses [hardhat](https://hardhat.org/) to run the CTF challenges.
-Challenges are implemented as hardhat tasks.
+Challenges are implemented as hardhat tests in [`/test`](./test).
 
 To fork the Ropsten testnet, you need an archive URL like the free ones from [Alchemy](https://alchemyapi.io/).
 
@@ -29,8 +34,8 @@ To fork the Ropsten testnet, you need an archive URL like the free ones from [Al
 Optionally set the block number in the `hardhat.config.ts` hardhat network configuration to the ropsten head block number such that the challenge contract is deployed.
 
 ```bash
-# simulate ropsten but run locally
+# fork ropsten but run locally
 npx hardhat test test/warmup/call-me.ts
-# once everything works, run all txs on ropsten testnet
+# once everything works, run all txs on ropsten testnet to gain points
 npx hardhat test test/warmup/call-me.ts --network ropsten
 ```
