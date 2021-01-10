@@ -1,6 +1,7 @@
 # capture-the-ether
 
 My solutions to [capture-the-ether CTF](https://capturetheether.com/).
+In-depth explanations for each level [can be read on my blog](https://cmichel.io/capture-the-ether-solutions/).
 
 Progress: 11600/11600
 Rank: 56

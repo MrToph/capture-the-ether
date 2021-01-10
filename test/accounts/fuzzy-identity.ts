@@ -64,7 +64,7 @@ it("solves the challenge", async function () {
   // in addition this smart contract address needs to have "badc0de" in it
   // so we need to create a vanity smart contract address
   // smart contract addresses are created as:
-  // keccak256(rlp(senderAddress, nonce))[0:12]
+  // keccak256(rlp(senderAddress, nonce))[12:]
   // http://ethereum.stackexchange.com/questions/760/how-is-the-address-of-an-ethereum-contract-computed
 
   // so we brute force it by picking a random private key
