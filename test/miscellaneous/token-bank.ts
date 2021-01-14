@@ -25,7 +25,7 @@ before(async () => {
 });
 
 it("solves the challenge", async function () {
-  // there's a re-entrancy attacak when doing the withdraw
+  // there's a re-entrancy issue when doing the withdraw
   // withdraw => token.transfer => msg.sender.tokenFallback() => ...
   // => balance is reset after the token.transfer only
   const attackerFactory = await ethers.getContractFactory("TokenBankAttacker");

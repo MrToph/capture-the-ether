@@ -21,6 +21,6 @@ before(async () => {
 
 it("solves the challenge", async function () {
   const tx = await contract.callme();
-  const txHash = tx && tx.hash
+  const txHash = tx.hash
   expect(txHash).to.not.be.undefined
 });

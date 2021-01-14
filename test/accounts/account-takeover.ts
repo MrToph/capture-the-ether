@@ -32,14 +32,14 @@ it("solves the challenge", async function () {
   const owner = `0x6B477781b0e68031109f21887e6B5afEAaEB002b`;
   // pick the only outgoing tx
   // https://ropsten.etherscan.io/tx/0xabc467bedd1d17462fcc7942d0af7874d6f8bdefee2b299c9168a216d3ff0edb
-  const tx1Hash = `0xabc467bedd1d17462fcc7942d0af7874d6f8bdefee2b299c9168a216d3ff0edb`;
-  const tx2Hash = `0xabc467bedd1d17462fcc7942d0af7874d6f8bdefee2b299c9168a216d3ff0edb`;
+  const tx1Hash = `0xd79fc80e7b787802602f3317b7fe67765c14a7d40c3e0dcb266e63657f881396`;
+  const tx2Hash = `0x061bf0b4b5fdb64ac475795e9bc5a3978f985919ce6747ce2cfbbcaccaf51009`;
   const tx1 = await eoa.provider!.getTransaction(tx1Hash);
   const tx2 = await eoa.provider!.getTransaction(tx2Hash);
   expect(tx1).not.to.be.undefined;
   expect(tx2).not.to.be.undefined;
   console.log(`TX 1`, JSON.stringify(tx1, null, 4));
-  console.log(`TX 2`, JSON.stringify(tx1, null, 4));
+  console.log(`TX 2`, JSON.stringify(tx2, null, 4));
 
   // this makes exploit possible, same r (derived from k)
   expect(tx1.r).to.eq(tx2.r)
@@ -56,7 +56,7 @@ it("solves the challenge", async function () {
   );
   expect(signer.address).to.eq(owner)
 
-  // need to send some ETH to signer EOA for contract deployment
+  // need to send some gas to challenge owner EOA for calling authenticate
   tx = await eoa.sendTransaction({
     to: signer.address,
     value: ethers.utils.parseEther(`0.1`),

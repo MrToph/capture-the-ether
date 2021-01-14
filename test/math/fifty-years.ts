@@ -82,7 +82,7 @@ it("solves the challenge", async function () {
   await printStorage();
 
   // we cannot withdraw all of it now because the contract only contains 1 + 2 = 3 wei
-  // but has account 2 + 3 = 5 wei
+  // but new queue items' .amount sums up to 2 + 3 = 5 wei
   // so need to add at least 2 more wei
   // use a selfdestruct wei transfer bypass first to get to the correct balance
   const attackerFactory = await ethers.getContractFactory("RetirementFundAttacker");

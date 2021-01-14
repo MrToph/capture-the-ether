@@ -33,7 +33,9 @@ const NONCE = BigNumber.from(`0`);
 // practicallly I also found a key after 7 million addresses
 const findMatchingPrivateKey = () => {
   let foundKey: HDNode | undefined = undefined;
-  // choose 512 bit of randomness like BIP39 would for when deriving seed from mnemonic
+  // choose 512 bits of randomness like BIP39 would for when deriving seed from mnemonic
+  // this is probably very inefficient compared to just deriving a key from randomness
+  // as it involves several hash functions when deriving the key from index
   const masterKey = ethers.utils.HDNode.fromSeed(crypto.randomBytes(512 / 8));
   const getPathForIndex = (index: number) => `m/44'/60'/0'/0/${index}`;
 
